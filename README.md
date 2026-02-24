@@ -38,10 +38,6 @@ Technical Details
 
 The implementation includes primary keys, foreign keys, unique constraints, check constraints, default values, and NOT NULL constraints. The schema follows normalization principles in order to minimize redundancy and ensure consistency.
 
-Entity–Relationship Diagram
-
-The ER diagram is included in the repository as diagram.png or ERD.pdf.
-
 Possible Extensions
 
 Possible future improvements include a web-based interface, secure password hashing, stored procedures, triggers for auditing, activity logging, and more advanced role-based access control mechanisms.
