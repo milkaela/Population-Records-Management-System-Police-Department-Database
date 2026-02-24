@@ -1,143 +1,47 @@
-🗄️ Population Records Management System
+Population Records Management System
 Police Department Database Design
 Overview
 
-This project consists of the design and implementation of a relational database meant to simulate the population records system used within a police department.
+This project represents the design and implementation of a relational database that simulates a population records management system used within a police department.
 
-The database manages both civil and operational data related to individuals, such as personal information, identity documents, criminal records, address history, driving licenses, registered vehicles, and name changes. It also includes a role-based user system to simulate different access levels inside the institution.
+The database manages both civil and operational data related to individuals, including personal details, identity documents, criminal records, address history, driving licenses, registered vehicles, and name changes. It also includes a role-based access structure meant to simulate different institutional access levels.
 
-Although the documentation is written in English, the database schema (table and column names) is implemented in Romanian.
+Although this documentation is written in English, the database schema (table and column names) is implemented in Romanian.
 
 Project Goal
 
-The main objective was to design a structured and normalized database that allows efficient storage, retrieval, and management of citizen data.
+The objective of this project was to design a structured and normalized relational database capable of storing and managing citizen data efficiently while maintaining data integrity.
 
-The system supports:
+The system supports searching individuals by national identification number (CNP), name, or other attributes, tracking both current and historical addresses, validating identity documents, viewing criminal record information, checking driving license status, and managing vehicles registered to a specific individual.
 
-Searching individuals by national identification number (CNP), name, or other attributes
-
-Tracking current and past addresses
-
-Validating identity documents
-
-Viewing criminal record information
-
-Checking driving license status
-
-Managing vehicles registered to a specific person
-
-The focus of the project is on database structure, data integrity, and correctly modeling real-world relationships between entities.
+The main focus of the project is correct relational modeling, integrity constraints, and a realistic representation of institutional data.
 
 User Roles
 
-To simulate a real institutional environment, the system defines three types of users:
+To simulate a real institutional environment, the system defines three user roles.
 
-Administrator
+The Administrator has full access to the database. This role can insert, update, and delete records, and can manage relationships and user accounts.
 
-Has full control over the database.
-Can insert, update, and delete records, as well as manage relationships and system users.
+The Internal User (Police Officer) has full read access to all stored data and can update existing information, but cannot delete records or manage user accounts.
 
-Internal User (Police Officer)
-
-Has access to all stored information.
-Can update existing records but cannot delete data or manage user accounts.
-
-Citizen
-
-Has restricted access to their own data only.
-Authentication can be done using identifiers such as CNP or VIN.
-Citizens can view:
-
-Their registered vehicles
-
-Their identity documents
-
-Driving license status
-
-Their own criminal record (if available)
-
-They are not allowed to modify any information.
+The Citizen has access strictly limited to their own records. Authentication can be done using identifiers such as CNP or VIN. Citizens can view their registered vehicles, identity documents, driving license status, and their own criminal record (if applicable), but they are not allowed to modify any data.
 
 Database Structure
 
-The database is organized around the following main entities:
-
-Persoane – stores personal data
-
-Adrese – stores address information
-
-PersoaneAdresa – associative table for many-to-many relationship with address history
-
-DocumenteIdentitate – identity documents
-
-Cazier – criminal record data
-
-SchimbareNume – name change history
-
-ContactePersoana – contact details
-
-Permise – driving licenses
-
-VehiculeInmatriculate – registered vehicles
-
-Utilizatori – system users and roles
+The database is organized around the following main entities: Persoane (personal data), Adrese (address information), PersoaneAdresa (associative table for the many-to-many relationship between persons and addresses, including address history), DocumenteIdentitate (identity documents), Cazier (criminal record data), SchimbareNume (name change history), ContactePersoana (contact details), Permise (driving licenses), VehiculeInmatriculate (registered vehicles), and Utilizatori (system users and roles).
 
 Relationships
 
-The database models several types of relationships:
-
-Many-to-many between Persons and Addresses (with historical tracking)
-
-One-to-one between Person and Criminal Record
-
-One-to-many between Person and:
-
-Name changes
-
-Contact details
-
-Driving licenses
-
-Registered vehicles
-
-One-to-one between Person and active Identity Document
-
-All relationships are enforced using foreign keys and integrity constraints.
+The database includes a many-to-many relationship between Persons and Addresses with historical tracking, a one-to-one relationship between Person and Criminal Record, a one-to-one relationship between Person and active Identity Document, and one-to-many relationships between Person and name changes, contact information, driving licenses, and registered vehicles. All relationships are enforced using foreign keys and integrity constraints.
 
 Technical Details
 
-The project was implemented using SQL and includes:
-
-Primary and foreign keys
-
-Unique constraints
-
-Check constraints
-
-Default values
-
-Not-null constraints
-
-The database design follows normalization principles to reduce redundancy and ensure consistency.
+The implementation includes primary keys, foreign keys, unique constraints, check constraints, default values, and NOT NULL constraints. The schema follows normalization principles in order to minimize redundancy and ensure consistency.
 
 Entity–Relationship Diagram
 
-The ER diagram is included in the repository as:
-
-diagram.png
-or
-ERD.pdf
+The ER diagram is included in the repository as diagram.png or ERD.pdf.
 
 Possible Extensions
 
-Future improvements could include:
-
-A web-based interface
-
-Secure password hashing
-
-Stored procedures and triggers
-
-Audit logging
-
-More advanced access control mechanisms
+Possible future improvements include a web-based interface, secure password hashing, stored procedures, triggers for auditing, activity logging, and more advanced role-based access control mechanisms.
